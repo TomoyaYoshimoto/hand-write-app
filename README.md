@@ -1,69 +1,76 @@
-# React + TypeScript + Vite
+# ✍️ ALS患者向け筆談支援アプリ（Prototype）
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ALS（筋萎縮性側索硬化症）患者の方が、  
+限られた手の動きでも意思を伝えられるように開発した**筆談支援アプリ**です。
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌱 背景
 
-## Expanding the ESLint configuration
+高齢になってからALSを発症された方から、  
+「手はわずかに動くが、筆談が家族にしか読めない」という相談を受けました。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 意識ははっきりしており、伝えたいことは明確にある。  
+- しかし、手と指の動きが限られており、**同じ位置で重なった文字を書くため第三者には判別が難しい**。  
+- ご家族は読み取れるが、**看護師など医療従事者とのコミュニケーションが困難**。
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 💡 課題
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- 同じ位置で重なる書き順の筆跡を**どう判別するか？**  
+- 家族以外の人（例：看護師）にも**読み取れる形にできないか？**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧠 アイデア・アプローチ
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- 書き順の軌跡をもとに、**その順序に近い文字を候補として表示する**仕組みを考案。  
+- ご本人特有の書き方（筆圧・角度・流れ）を学習させ、**個人の書き癖に合わせて精度を高める**構想。  
+
+---
+
+## 🧩 実装した機能（第一弾）
+
+- 🖊 **書き順の解析と文字候補の表示機能**  
+  - 書いた線の軌跡から、対応する文字を推定して候補として提示。  
+
+- 🧠 **学習機能（プロトタイプ）**  
+  - ご本人の書き方を学習し、文字認識の精度を上げる仕組みを実験。  
+  - ただし、特定の文字精度を上げると他文字の認識率が落ちるなど、全体最適化は困難で一時断念。
+
+---
+
+## 🎯 コンセプト
+
+- **「まず使えるものを届ける」ことを最優先**  
+  システム設計の美しさよりも、患者さんのモヤモヤを少しでも早く解消することを目的としました。  
+- **AIを活用したMVP開発**  
+  最小限の構成で素早くリリース → 実際に使ってもらいながら改善。  
+- **低コスト・短期間開発**  
+  拡張性や保守性は後から考慮。まずは「動くプロトタイプ」を届けることを重視。
+
+---
+
+## 🛠 技術構成
+
+- **Frontend:** React + TypeScript + Vite  
+- **特徴:** 書き順データの取得と簡易的な学習ロジックを実装  
+
+---
+
+## 🚧 今後の展望
+
+- 書き方の個人差に対応できる学習モデルの再設計  
+- 書き順以外の要素（筆圧・軌跡の速度など）を取り入れた精度向上  
+- 医療現場でのヒアリングを重ね、使いやすいUIへ改善  
+
+---
+
+## ❤️ 想い
+
+> 「伝えたいのに伝わらない」状況を、  
+>  少しでも減らしたい。  
+>  技術を、人の“声”を届けるために使いたい。
+
+---
