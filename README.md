@@ -1,7 +1,7 @@
 # ✍️ ALS患者向け筆談支援アプリ
 
 ALS（筋萎縮性側索硬化症）患者の方が、  
-限られた手の動きでも意思を伝えられるように開発した**筆談支援アプリ**です。
+限られた手の動きでも意思を伝えられるように開発した**筆談支援アプリ**です。（使用はタブレットを想定）
 
 ---
 
@@ -74,3 +74,16 @@ ALS（筋萎縮性側索硬化症）患者の方が、
 >  技術を、人の“声”を届けるために使いたい。
 
 ---
+
+## 🚀 デモサイト
+🔗 **URL**  
+[https://eloquent-cascaron-c61476.netlify.app/](https://jazzy-torrone-551c3b.netlify.app/)
+
+---
+## 🎨 画面イメージ
+
+### ✍️ 文字入力画面
+<img width="895" height="830" alt="スクリーンショット 2025-10-24 10 36 23" src="https://github.com/user-attachments/assets/004c4db2-284f-467a-8d46-ffd9d508a238" />
+<img width="895" height="830" alt="スクリーンショット 2025-10-24 10 39 12" src="https://github.com/user-attachments/assets/490f612f-e959-409e-8d4f-80ec74d42f02" />
+
+
